@@ -1,0 +1,40 @@
+<!-- src/app/student-form/student-form.component.html -->
+<div class="container mt-4">
+    <h2>Add Student</h2>
+    <form [formGroup]="studentForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" formControlName="name" class="form-control" id="name">
+      </div>
+      <div class="form-group">
+        <label for="rollNo">Roll No:</label>
+        <input type="text" formControlName="rollNo" class="form-control" id="rollNo">
+      </div>
+      <div class="form-group">
+        <label for="class">Class:</label>
+        <input type="text" formControlName="class" class="form-control" id="class">
+      </div>
+      
+      <!-- Multiple Addresses Form Group -->
+      <div formArrayName="addresses">
+        <div *ngFor="let address of addresses.controls; let i = index" class="mb-3">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="street">Street:</label>
+              <input type="text" formControlName="street" class="form-control" id="street">
+            </div>
+            <div class="col-md-6">
+              <label for="city">City:</label>
+              <input type="text" formControlName="city" class="form-control" id="city">
+            </div>
+          </div>
+          <button type="button" (click)="removeAddress(i)" class="btn btn-danger mt-2">Remove Address</button>
+        </div>
+      </div>
+      
+      <button type="button" (click)="addAddress()" class="btn btn-success">Add Address</button> <br> <br> 
+      
+      <button type="button" (click)="addStudent()" class="btn btn-primary mt-3">Add Student</button>
+    </form>
+  </div>
+  
